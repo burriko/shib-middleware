@@ -1,5 +1,7 @@
 # shib-middleware
 
+[![Build Status](https://travis-ci.org/burriko/shib-middleware.svg?branch=master)](https://travis-ci.org/burriko/shib-middleware)
+
 Express middleware to work with shibboleth headers.
 
 - Reads shib headers and add them to req object.
