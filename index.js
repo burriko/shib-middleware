@@ -46,7 +46,7 @@ function authenticate(req, res, next) {
 }
 
 function sessionResponse(req, res) {
-  if (req.shib) {
+  if (req.shib.username) {
     res.json(req.shib);
   } else {
     var error_response = {
