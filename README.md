@@ -1,6 +1,6 @@
 # shib-middleware
 
-[![Build Status](https://travis-ci.org/burriko/shib-middleware.svg?branch=master)](https://travis-ci.org/burriko/shib-middleware)
+[![Build Status](https://travis-ci.org/graemetait/shib-middleware.svg?branch=master)](https://travis-ci.org/graemetait/shib-middleware)
 [![Coverage Status](https://coveralls.io/repos/burriko/shib-middleware/badge.svg?branch=master&service=github)](https://coveralls.io/github/burriko/shib-middleware?branch=master)
 
 Express middleware to work with shibboleth headers.
