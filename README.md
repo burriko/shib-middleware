@@ -20,9 +20,13 @@ To set up shib data on the request object use the shib middleware.
 ```
 app.use(shib());
 ```
-By default development data is used. To read live headers pass in the string 'production', or use an env var.
+By default shib data is read from live headers. You can pass in an object of your own vars for dev purposes.
 ```
-app.use(shib(app.get('env')));
+app.use(shib({
+  name:     'Local Developer',
+  email:    'example@ncl.ac.uk',
+  username: 'nxx99'
+}));
 ```
 To check if user is authenticated use shib.authenticate.
 ```
