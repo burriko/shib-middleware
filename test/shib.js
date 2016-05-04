@@ -6,6 +6,14 @@ chai.use(spies);
 
 var expect = chai.expect;
 
+var dev_vars = {
+  name:           'Local Developer',
+  email:          'example@ncl.ac.uk',
+  username:       'nxx99',
+  student_number: '123456789',
+  student:        true,
+};
+
 describe('Shibboleth middleware', function () {
   describe('init', function () {
     var req, res, next;
@@ -30,13 +38,13 @@ describe('Shibboleth middleware', function () {
     });
 
     it('should inject development shib vars into request', function () {
-      shib()(req, res, next);
+      shib(dev_vars)(req, res, next);
 
       expect(req.shib.name).to.equal('Local Developer');
     });
 
     it('should inject production shib vars into request', function () {
-      shib('production')(req, res, next);
+      shib()(req, res, next);
 
       expect(next).to.have.been.called();
       expect(req.shib.name).to.equal('Test Name');
@@ -67,7 +75,7 @@ describe('Shibboleth middleware', function () {
     });
 
     it('should do nothing if authenticated', function () {
-      shib()(req, res, next);
+      shib(dev_vars)(req, res, next);
 
       expect(next).to.have.been.called();
       next.reset();
