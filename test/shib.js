@@ -97,4 +97,40 @@ describe('Shibboleth middleware', function () {
       expect(next).to.not.have.been.called();
     });
   });
+
+  describe('session response', function() {
+    var req, res, next;
+
+    beforeEach(function () {
+      req = {
+        path: '',
+        shib: {}
+      };
+      res = {
+        status: chai.spy(() => res),
+        json: chai.spy(() => res)
+      };
+      next = chai.spy();
+    });
+
+    it('should respond with shib headers', function() {
+      shib(dev_vars)(req, res, next);
+
+      shib.sessionResponse(req, res);
+
+      expect(res.json).to.have.been.called.with(dev_vars);
+    });
+
+    it('should respond with 404 error', function() {
+      shib({})(req, res, next);
+
+      shib.sessionResponse(req, res);
+
+      expect(res.status).to.have.been.called.with(404);
+      expect(res.json).to.have.been.called.with({errors: [{
+        status: 404,
+        title: 'No session found'
+      }]});
+    });
+  });
 });
