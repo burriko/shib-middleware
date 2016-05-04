@@ -1,7 +1,7 @@
 # shib-middleware
 
 [![Build Status](https://travis-ci.org/graemetait/shib-middleware.svg?branch=master)](https://travis-ci.org/graemetait/shib-middleware)
-[![Coverage Status](https://coveralls.io/repos/graemetait/shib-middleware/badge.svg?branch=master&service=github)](https://coveralls.io/github/graemetait/shib-middleware?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/graemetait/shib-middleware/badge.svg?branch=master)](https://coveralls.io/github/graemetait/shib-middleware?branch=master)
 
 Express middleware to work with shibboleth headers.
 
