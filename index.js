@@ -2,32 +2,19 @@ module.exports = init;
 module.exports.authenticate = authenticate;
 module.exports.sessionResponse = sessionResponse;
 
-function init(env) {
-  if (env === 'production') {
-
-    return function (req, res, next) {
+function init(shib_vars) {
+  return function (req, res, next) {
+    if (shib_vars) {
+      req.shib = shib_vars;
+    } else {
       req.shib = {
         name:           req.headers.http_shib_display_name,
         email:          req.headers.http_shib_ep_emailaddress,
         username:       req.headers.http_shib_username,
         student_number: req.headers.http_shib_student_number,
       };
-      next();
     }
-
-  } else {
-
-    return function (req, res, next) {
-      req.shib = {
-        name:           'Local Developer',
-        email:          'example@ncl.ac.uk',
-        username:       'nxx99',
-        student_number: '120092721',
-        student:        true,
-      };
-      next();
-    }
-
+    next();
   }
 }
 
