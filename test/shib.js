@@ -132,5 +132,42 @@ describe('Shibboleth middleware', function () {
         title: 'No session found'
       }]});
     });
+
+    it('should set student to true if student number', function() {
+      req.headers = {
+        http_shib_username: 'Test Name',
+        http_shib_student_number: '1234567'
+      };
+
+      shib()(req, res, next);
+
+      shib.sessionResponse(req, res);
+
+      expect(res.json).to.have.been.called.with({
+        name:           req.headers.http_shib_display_name,
+        email:          req.headers.http_shib_ep_emailaddress,
+        username:       req.headers.http_shib_username,
+        student_number: req.headers.http_shib_student_number,
+        student:        true
+      });
+    });
+
+    it('should set student to false if no student number', function() {
+      req.headers = {
+        http_shib_username: 'Test Name'
+      };
+
+      shib()(req, res, next);
+
+      shib.sessionResponse(req, res);
+
+      expect(res.json).to.have.been.called.with({
+        name:           req.headers.http_shib_display_name,
+        email:          req.headers.http_shib_ep_emailaddress,
+        username:       req.headers.http_shib_username,
+        student_number: req.headers.http_shib_student_number,
+        student:        false
+      });
+    });
   });
 });

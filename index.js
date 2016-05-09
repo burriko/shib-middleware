@@ -12,6 +12,7 @@ function init(shib_vars) {
         email:          req.headers.http_shib_ep_emailaddress,
         username:       req.headers.http_shib_username,
         student_number: req.headers.http_shib_student_number,
+        student:        !!req.headers.http_shib_student_number
       };
     }
     next();
