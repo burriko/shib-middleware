@@ -1,6 +1,6 @@
 {
   "name": "shib-middleware",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Express middleware to work with shibboleth headers",
   "scripts": {
     "test": "node_modules/.bin/mocha",
